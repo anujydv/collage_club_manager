@@ -1,0 +1,49 @@
+<% include partials/header.ejs%>
+<section id="home" class="video-hero"
+	style="height: 500px; background-image: url(images/cover_img_1.jpg);  background-size:cover; background-position: center center;background-attachment:fixed;"
+	data-section="home">
+	<div class="overlay"></div>
+	<div class="display-t display-t2 text-center">
+		<div class="display-tc display-tc2">
+			<div class="container">
+				<div class="col-md-12 col-md-offset-0">
+					<div class="animate-box">
+						<h2>Know Collage Club</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="colorlib-blog">
+	<div class="container">
+		<% i=0; if(club_data){%>
+		<% for(club of club_data){%>
+		<% i++; %>
+		<% if(i==0 || i%3===1){%>
+		<div class="row">
+			<%}%>
+			<div class="col-md-4 animate-box">
+				<article>
+					<h2><a href="/club/<%= club.club_name.split(' ').join('_')%>"><%= club.club_name%></a></h2>
+			<p class="admin"><span><%= club.created_at%></span></p>
+			<p><%= club.club_moto%></p>
+			<p><%= club.club_domains%></p>
+					<p class="author-wrap"><a href="#" class="author-img"
+							style="background-image: url(images/person1.jpg);"></a> <a href="#" class="author"><%= club.club_founder%></a>
+			</p>
+			</article>
+		</div>
+		<% if(i%3===0){%>
+	</div>
+	<% }}}else{%>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 text-center colorlib-heading animate-box fadeInUp animated-fast">
+			<h2>Sorry No Club Added</h2>
+		</div>
+	</div>
+	<% }%>
+</div>
+</div>
+<% include partials/footer.ejs%>
