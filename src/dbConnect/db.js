@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 mongoose.Promise = global.Promise;
-let conn = 'mongodb://localhost:27017/club'
+console.log(process.env.DB_URL);
+let conn = process.env.DB_URL;
 mongoose.connect(conn,{useNewUrlParser:true});
 
 module.exports = mongoose;
